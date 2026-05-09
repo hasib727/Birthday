@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+height:100vh;
+color:white;
+}
+
+.slide{
+width:100%;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+animation:fade 0.8s ease;
+}
+
+.slide.active{
+display:flex;
+}
+
+.title{
+font-size:42px;
+font-family:'Pacifico',cursive;
+text-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+.message{
+font-size:26px;
+max-width:700px;
+line-height:1.6;
+font-family:'Pacifico',cursive;
+}
+
+.arrow{
+margin-top:35px;
+font-size:55px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+.arrow:hover{
+transform:scale(1.15);
+}
+
+@keyframes bounce {
+0%,100%{transform:translateX(0);}
+50%{transform:translateX(10px);}
+}
+
+@keyframes fade {
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.photo{
+width:320px;
+max-width:85vw;
+filter:drop-shadow(0 0 15px rgba(255,255,255,0.8));
+border-radius:20px;
+}
+
+.cake{
+margin-top:15px;
+font-size:70px;
+}
+
+.birthday-text{
+margin-top:10px;
+font-size:38px;
+font-family:'Pacifico',cursive;
+}
+
+.heart{
+position:absolute;
+color:white;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float {
+from {
+transform:translateY(100vh) scale(1);
+opacity:1;
+}
+to {
+transform:translateY(-10vh) scale(1.5);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active" id="slide1">
+<div class="title">Hello Fabiha! 💖</div>
+<div class="arrow" onclick="nextSlide(2)">⇨</div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+<div class="message">
+Happy birthday my queen 👑<br>
+Today is the most special day for you 💕
+</div>
+
+<div class="arrow" onclick="nextSlide(3)">⇨</div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+
+<!-- Ekhane tomar edited pic er link dibo -->
+<img class="photo" src="fabiha.png">
+
+<div class="birthday-text">
+Happy Birthday 🎉
+</div>
+
+<div class="cake">
+🎂✨
+</div>
+
+</div>
+
+<script>
+
+function nextSlide(num){
+document.querySelectorAll('.slide').forEach(slide=>{
+slide.classList.remove('active');
+});
+
+document.getElementById('slide'+num).classList.add('active');
+}
+
+setInterval(() => {
+
+const heart = document.createElement('div');
+
+heart.classList.add('heart');
+
+heart.innerHTML = '❤';
+
+heart.style.left = Math.random()*100 + 'vw';
+
+heart.style.fontSize = (Math.random()*20 + 15) + 'px';
+
+document.body.appendChild(heart);
+
+setTimeout(() => {
+heart.remove();
+}, 6000);
+
+}, 300);
+
+</script>
+
+</body>
+</html>
